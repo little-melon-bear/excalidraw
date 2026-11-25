@@ -22,7 +22,9 @@ export const ProjectName = (props: Props) => {
     if (!props.ignoreFocus) {
       focusNearestParent(event.target);
     }
-    const value = event.target.value;
+    // don't keep accidental leading/trailing spaces in the file name
+    const value = event.target.value.trim();
+    setFileName(value);
     if (value !== props.value) {
       props.onChange(value);
     }
